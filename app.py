@@ -23,6 +23,8 @@ youtube = build("youtube", "v3", developerKey=API_KEY)
 # =====================
 # 共通：アクセス制限
 # =====================
+ACCESS_KEY = os.environ.get("ACCESS_KEY")
+
 @app.before_request
 def check_access_key():
     # 静的ファイルは通す
