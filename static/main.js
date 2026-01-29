@@ -1,6 +1,13 @@
 
 const screen = document.getElementById("screen");
 const startBtn = document.getElementById("startBtn");
+const params = new URLSearchParams(window.location.search);
+const accessKey = params.get("key");
+
+if (!accessKey) {
+  alert("アクセスキーがありません。正しいURLからアクセスしてください。");
+  startBtn.disabled = true;
+}
 
 let player = null;
 let playerReady = false;
@@ -57,7 +64,7 @@ function startGame() {
   selectedAnswer = null;
   isEnded = false;
 
-  fetch(`/question?num=${currentQuestion}`)
+  fetch(`/question?num=${currentQuestion}&key=${accessKey}`)
     .then(res => res.json())
     .then(data => {
       correctAnswer = data.correct;
