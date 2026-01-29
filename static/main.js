@@ -106,12 +106,12 @@ function renderHistory() {
 ========================= */
 function playIntro(videoId) {
   player.loadVideoById(videoId);
-  player.setVolume(30);
+  player.setVolume(5);
   player.playVideo();
 
   setTimeout(() => {
     player.pauseVideo();
-  }, 5000);
+  }, 7000);
 }
 
 /* =========================
@@ -188,7 +188,7 @@ function endQuestion() {
 ========================= */
 function showAnswer() {
   // 続きから再生（ロードしない）
-  player.setVolume(30);
+  player.setVolume(5);
   player.playVideo();
 
   const isCorrect = selectedAnswer === correctAnswer;
