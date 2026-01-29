@@ -1,0 +1,49 @@
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+button {
+  font-size: 24px;
+  padding: 15px 30px;
+}
+
+.choice {
+  display: block;
+  margin: 10px auto;
+  width: 300px;
+}
+
+.choice.selected {
+  border: 3px solid yellow;
+}
+
+#status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#history {
+  font-size: 20px;
+}
+
+.choice.selected {
+  border: 3px solid yellow;
+}
+
+button {
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+button:hover {
+  background: #444;
+}
+
+.choice.selected {
+  outline: 2px solid #0ff;
+}
