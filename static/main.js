@@ -26,7 +26,9 @@ let results = [];
 /* =========================
    YouTube API
 ========================= */
-function onYouTubeIframeAPIReady() {
+window.onYouTubeIframeAPIReady = function () {
+  console.log("YouTube API Ready");
+
   player = new YT.Player("player", {
     height: "0",
     width: "0",
@@ -37,12 +39,14 @@ function onYouTubeIframeAPIReady() {
     },
     events: {
       onReady: () => {
+        console.log("Player Ready");
         playerReady = true;
         startBtn.disabled = false;
       }
     }
   });
-}
+};
+
 
 /* =========================
    スタート
