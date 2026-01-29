@@ -5,7 +5,9 @@ import random
 # =========================
 # 設定
 # =========================
-API_KEY = "AIzaSyBdDXAqaDJHRswgVe1DC0U_jO6CvOp6Fsw"
+import os
+
+API_KEY = os.environ.get("YOUTUBE_API_KEY")
 
 PLAYLIST_A_ID = "PLp6OMak5yXrvYbtuH4HyrYhqG_hb-fawB"
 PLAYLIST_B_ID = "PLp6OMak5yXruRxBTdzU2xe6mlVKQ0FpwF"
@@ -121,4 +123,4 @@ def question():
 # 起動
 # =========================
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
