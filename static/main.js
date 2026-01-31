@@ -1,4 +1,3 @@
-
 const screen = document.getElementById("screen");
 const startBtn = document.getElementById("startBtn");
 const params = new URLSearchParams(window.location.search);
@@ -10,7 +9,6 @@ if (!accessKey) {
 }
 
 let player = null;
-let playerReady = false;
 
 let correctAnswer = "";
 let selectedAnswer = null;
@@ -27,8 +25,6 @@ let results = [];
    YouTube API
 ========================= */
 window.onYouTubeIframeAPIReady = function () {
-  console.log("YouTube API Ready");
-
   player = new YT.Player("player", {
     height: "0",
     width: "0",
@@ -39,23 +35,26 @@ window.onYouTubeIframeAPIReady = function () {
     },
     events: {
       onReady: () => {
-        console.log("Player Ready");
-        playerReady = true;
         startBtn.disabled = false;
       }
     }
   });
 };
 
-
 /* =========================
    スタート
 ========================= */
 startBtn.onclick = () => {
-  if (!playerReady) {
+  // Edge対策：playerが存在しなければ待つ
+  if (!player) {
     alert("YouTubeプレイヤー準備中です。少し待ってください");
     return;
   }
+
+  // iOS対策：ユーザー操作中に一度再生して許可を取る
+  player.setVolume(5);
+  player.playVideo();
+  player.pauseVideo();
 
   startBtn.style.display = "none";
   currentQuestion = 0;
@@ -187,7 +186,6 @@ function endQuestion() {
    正解発表
 ========================= */
 function showAnswer() {
-  // 続きから再生（ロードしない）
   player.setVolume(5);
   player.playVideo();
 
